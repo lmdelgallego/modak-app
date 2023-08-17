@@ -1,9 +1,27 @@
 <h1>Artwork</h1>
 <!-- search box -->
+<div>
+  <div class="flex flex-row justify-between mb-4">
+    <div class="flex flex-row gap-2">
+
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input placeholder="Search..." type="text" pInputText class="border-1 border-round-xl surface-border" />
+          <!-- <input type="text" pInputText /> -->
+      </span>
+      <p-button class="p-ripple p-element p-button-rounded p-button-success p-button p-component p-button-icon-only"  icon="pi pi-search" iconPos="right"></p-button>
+    </div>
+    <!-- <div class="flex flex-row gap-2">
+      <button class="border-1 border-round-2xl h-2rem p-2 shadow-1 surface-border w-6rem">Filter</button>
+      <button class="border-1 border-round-2xl h-2rem p-2 shadow-1 surface-border w-6rem">Sort</button>
+    </div> -->
+  </div>
+</div>
 <!-- filter -->
 <div>
   <div class="flex flex-row justify">
     <div class="border-1 border-round-2xl flex flex-column gap-2 h-auto pb-3 overflow-auto shadow-1 surface-border w-26rem"
+      pAnimate enterClass="flip"
       *ngFor="let art of artwork">
       <img [src]="getImageUrl(art.image_id)" alt="{{art.title}}" width="100%" />
       <div class="card-body flex flex-column gap-2 px-2">
