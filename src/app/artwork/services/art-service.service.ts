@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/enviroment';
+import { environment } from '../../../environments/environment';
 import { Observable, forkJoin, map, mergeMap, of, switchMap } from 'rxjs';
 
 import { Main, Artworks, Info, Config } from './artwork-service';
