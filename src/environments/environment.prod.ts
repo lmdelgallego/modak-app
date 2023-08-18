@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
   base_url: 'https://api.artic.edu/api/v1/artworks',
+  coin_api_key: '2e6ae0c2c404fa70aeb6bd412e8a56c5',
 };

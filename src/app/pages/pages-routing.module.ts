@@ -14,6 +14,11 @@ import { PageComponent } from './page.component';
             loadChildren: () =>
               import('../artwork/artwork.module').then((m) => m.ArtworkModule),
           },
+          {
+            path: 'crypto',
+            loadChildren: () =>
+              import('../crypto/crypto.module').then((m) => m.CryptoModule),
+          },
         ],
       },
     ]),

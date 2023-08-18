@@ -9,13 +9,15 @@
     id="searchForm"
   >
     <div class="flex flex-row gap-2">
-
       <span class="p-input-icon-left">
         <i class="pi pi-search"></i>
         <input placeholder="Search..." type="text" formControlName="search" pInputText class="border-1 border-round-xl surface-border" />
-          <!-- <input type="text" pInputText /> -->
       </span>
-      <p-button class="p-ripple p-element p-button-rounded p-button-success p-button p-component p-button-icon-only"  icon="pi pi-search" iconPos="right"></p-button>
+      <p-button class="p-ripple p-element p-button-rounded p-button-success p-button p-component p-button-icon-only"
+        type="submit"
+        icon="pi pi-search"
+        iconPos="right"
+      ></p-button>
     </div>
   </form>
 </div>
@@ -24,19 +26,17 @@
   Please use the search box above to find the artwork you are looking for.
 </div>
 
-<div class="flex flex-row flex-wrap gap-3 justify max-w-full">
-  <div class="border-1 border-round-2xl flex flex-column gap-2 h-auto pb-3 overflow-auto shadow-1 surface-border w-20rem"
-    *ngFor="let art of artwork">
-    <img [src]="getImageUrl(art.image_id)" alt="{{art.title}}" width="100%" />
-    <div class="card-body flex flex-column gap-2 px-2">
-      <h2 class="m-0 text-2xl font-bold">{{ art.title }}</h2>
-      <p class="m-0 text-sm">{{ art.artist_display }}</p>
-      <p class="m-0 right text-200 text-right text-sm">{{ art.artwork_type_title }}</p>
+<div *ngIf="artwork.length > 0">
+  <div class="flex flex-row flex-wrap gap-3 justify max-w-full">
+    <div class="border-1 border-round-2xl flex flex-column gap-2 h-auto pb-3 overflow-auto shadow-1 surface-border w-20rem"
+      *ngFor="let art of artwork">
+      <img [src]="getImageUrl(art.image_id)" alt="{{art.title}}" width="100%" />
+      <div class="card-body flex flex-column gap-2 px-2">
+        <h2 class="m-0 text-2xl font-bold">{{ art.title }}</h2>
+        <p class="m-0 text-sm">{{ art.artist_display }}</p>
+        <p class="m-0 right text-200 text-right text-sm">{{ art.artwork_type_title }}</p>
+      </div>
     </div>
   </div>
+  <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="120"></p-paginator>
 </div>
-
-<!-- pagination -->
-
-<p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="120"></p-paginator>
-<!-- footer -->

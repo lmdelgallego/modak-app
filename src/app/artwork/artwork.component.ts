@@ -33,7 +33,6 @@ export class ArtworkComponent {
 
   onSubmit() {
     const search = this.searchForm.value.search as string;
-    console.log(search);
     this.service.getArtworkList(search).subscribe((artwork) => {
       this.artwork = artwork;
     });
