@@ -1,181 +1,45 @@
 import { Component } from '@angular/core';
+import { ArtWorksService } from './services/art-service.service';
+import { ArtWork } from './domain/ArtWork';
+import { FormBuilder, Validators } from '@angular/forms';
+import { PaginatorState } from 'primeng/paginator';
 
-
-const ARTWORK = [
-  {
-    id: 25674,
-    api_model: 'artworks',
-    api_link: 'https://api.artic.edu/api/v1/artworks/25674',
-    is_boosted: false,
-    title: 'The Truck',
-    alt_titles: null,
-    thumbnail: {
-      lqip: 'data:image/gif;base64,R0lGODlhCAAFAPUAAB4ZFzIAADsGAycSDDUUCz0UDzQUED4gFU4FBFEGAmMlG0EqKEY+PVwzMGQ9KGE1M281NmU/NUdCP11FPnZJN2xNTHJHQX1OQHhMSH5WSGVhXnh3c41pW4FmYoVtbIp4cZSJgJmSjpqWkKaKgqmno6iopKqrqLCyrgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAAIAAUAAAYlQFHn0cCMSCYQpMKIXEKnz2KjmVg8pQwBIDEEBBzHYVBQJBCUIAA7',
-      width: 3000,
-      height: 2009,
-      alt_text:
-        'A work made of metal, plaster, glass, wood, plastic, 16mm color film, silent, transferred to digital video (projection), 2 min 54 sec loop.',
-    },
-    main_reference_number: '1966.336',
-    has_not_been_viewed_much: false,
-    boost_rank: null,
-    date_start: 1966,
-    date_end: 1966,
-    date_display: '1966',
-    date_qualifier_title: '',
-    date_qualifier_id: null,
-    artist_display: 'George Segal\nAmerican, 1924-2000',
-    place_of_origin: 'United States',
-    dimensions: '167.6 × 558.8 × 152.4 cm (66 × 220 × 60 in.)',
-    dimensions_detail: [
-      {
-        depth_cm: 152.4,
-        depth_in: 60,
-        width_cm: 558.8,
-        width_in: 220,
-        height_cm: 167.6,
-        height_in: 66,
-        diameter_cm: 0,
-        diameter_in: 0,
-        clarification: null,
-      },
-    ],
-    medium_display:
-      'Metal, plaster, glass, wood, plastic, 16mm color film, silent, transferred to digital video (projection), 2 min 54 sec loop',
-    inscriptions: null,
-    credit_line: 'Mr. and Mrs. Frank G. Logan Purchase Prize Fund',
-    catalogue_display: null,
-    publication_history: null,
-    exhibition_history: null,
-    provenance_text: null,
-    edition: null,
-    publishing_verification_level: 'Web Basic',
-    internal_department_id: 246,
-    fiscal_year: null,
-    fiscal_year_deaccession: null,
-    is_public_domain: false,
-    is_zoomable: false,
-    max_zoom_window_size: 843,
-    copyright_notice: null,
-    has_multimedia_resources: false,
-    has_educational_resources: false,
-    has_advanced_imaging: false,
-    colorfulness: 48.604,
-    color: {
-      h: 246,
-      l: 51,
-      s: 66,
-      percentage: 0.0006309785214911285,
-      population: 3,
-    },
-    latitude: null,
-    longitude: null,
-    latlon: null,
-    is_on_view: false,
-    on_loan_display: null,
-    gallery_title: null,
-    gallery_id: null,
-    artwork_type_title: 'Film, Video, New Media',
-    artwork_type_id: 33,
-    department_title: 'Contemporary Art',
-    department_id: 'PC-8',
-    artist_id: 36595,
-    artist_title: 'George Segal',
-    alt_artist_ids: [],
-    artist_ids: [36595],
-    artist_titles: ['George Segal'],
-    category_ids: ['PC-8'],
-    category_titles: ['Contemporary Art'],
-    term_titles: [
-      'sculpture',
-      'glass',
-      'vehicles',
-      'modern and contemporary art',
-      'new media',
-      'driving',
-      'figures (representations)',
-      'red (color)',
-      'trucks',
-      'time-based works',
-      'funerary',
-    ],
-    style_id: null,
-    style_title: null,
-    alt_style_ids: [],
-    style_ids: [],
-    style_titles: [],
-    classification_id: 'TM-13',
-    classification_title: 'sculpture',
-    alt_classification_ids: ['TM-155', 'TM-10383', 'TM-12314', 'TM-11076'],
-    classification_ids: ['TM-13', 'TM-155', 'TM-10383', 'TM-12314', 'TM-11076'],
-    classification_titles: [
-      'sculpture',
-      'modern and contemporary art',
-      'new media',
-      'time-based works',
-      'funerary',
-    ],
-    subject_id: 'TM-12698',
-    alt_subject_ids: ['TM-12742', 'TM-12283', 'TM-11851', 'TM-12741'],
-    subject_ids: ['TM-12698', 'TM-12742', 'TM-12283', 'TM-11851', 'TM-12741'],
-    subject_titles: [
-      'vehicles',
-      'driving',
-      'figures (representations)',
-      'red (color)',
-      'trucks',
-    ],
-    material_id: 'TM-2453',
-    alt_material_ids: [],
-    material_ids: ['TM-2453'],
-    material_titles: ['glass'],
-    technique_id: null,
-    alt_technique_ids: [],
-    technique_ids: [],
-    technique_titles: [],
-    theme_titles: [],
-    image_id: 'e41c5249-2778-016b-faef-0740022e22c1',
-    alt_image_ids: [],
-    document_ids: [],
-    sound_ids: [],
-    video_ids: [],
-    text_ids: [],
-    section_ids: [],
-    section_titles: [],
-    site_ids: [],
-    suggest_autocomplete_all: [
-      {
-        input: ['1966.336'],
-        contexts: {
-          groupings: ['accession'],
-        },
-      },
-      {
-        input: ['The Truck'],
-        weight: 1934,
-        contexts: {
-          groupings: ['title'],
-        },
-      },
-    ],
-    source_updated_at: '2023-08-16T17:50:50-05:00',
-    updated_at: '2023-08-16T17:50:55-05:00',
-    timestamp: '2023-08-16T21:20:35-05:00',
-  },
-];
-
+interface PageEvent {
+  first: number;
+  rows: number;
+  page: number;
+  pageCount: number;
+}
 
 @Component({
   selector: 'app-artwork',
   templateUrl: './artwork.component.html',
-  styleUrls: ['./artwork.component.scss']
+  styleUrls: ['./artwork.component.scss'],
 })
 export class ArtworkComponent {
+  first: number = 0;
+  rows: number = 10;
+  artwork: Array<ArtWork> = [];
 
-  artwork = ARTWORK;
+  searchForm = this.fb.group({
+    search: ['', [Validators.required]],
+  });
+
+  constructor(private service: ArtWorksService, private fb: FormBuilder) {}
 
   getImageUrl(imageId: string) {
     return `https://www.artic.edu/iiif/2/${imageId}/full/843,/0/default.jpg`;
   }
 
+  onSubmit() {
+    const search = this.searchForm.value.search as string;
+    console.log(search);
+    this.service.getArtworkList(search).subscribe((artwork) => {
+      this.artwork = artwork;
+    });
+  }
+
+  onPageChange(event: PaginatorState) {
+    console.log(event);
+  }
 }
