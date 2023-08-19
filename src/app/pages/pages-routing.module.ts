@@ -9,7 +9,7 @@ import { AuthGuard } from '../auth/guards/auth.guard';
       {
         path: '',
         component: PageComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
         children: [
           {
             path: '',

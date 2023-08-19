@@ -23,14 +23,30 @@
     </form>
   </div>
 
-  <div *ngIf="artwork.length === 0">
-    Please use the search box above to find the artwork you are looking for.
+  <div *ngIf="!(loading$ | async); else loadingTemp">
+    <div *ngIf="artwork$ | async as artwork;">
+      <div *ngIf="artwork.length === 0">
+        No artwork found for "{{ searchForm.value.search }}".
+      </div>
+
+      <div *ngIf="artwork.length > 0">
+        <div class="flex flex-row flex-wrap gap-3 justify max-w-full pb-3">
+          <app-card *ngFor="let art of artwork" [art]="art"></app-card>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <div *ngIf="artwork.length > 0">
-    <div class="flex flex-row flex-wrap gap-3 justify max-w-full pb-3">
-      <app-card *ngFor="let art of artwork" [art]="art"></app-card>
+  <ng-template #loadingTemp>
+    <div class="flex flex-row h-6rem justify-content-center max-w-full">
+      <p-progressSpinner
+        [style.width.px]="20"
+        [style.height.px]="20"
+        strokeWidth="3"
+        animationDuration=".5s"
+      ></p-progressSpinner>
     </div>
-    <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="120"></p-paginator>
-  </div>
+  </ng-template>
+
 </div>
