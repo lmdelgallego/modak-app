@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { PrimeIcons } from 'primeng/api';
+import { SidebarService } from '../service/sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,4 +20,16 @@ export class SidebarComponent {
       icon: PrimeIcons.MONEY_BILL,
     },
   ];
+
+  @HostListener('document:click', ['$event'])
+  clickout(event: any) {
+    console.log(event.target);
+    if (event.target.id !== 'sidebar-toggle') {
+      this.service.toggleSidebar();
+    } else {
+      return;
+    }
+  }
+
+  constructor(private service: SidebarService) {}
 }

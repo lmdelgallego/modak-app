@@ -1,5 +1,5 @@
 <div class="min-h-screen flex relative static surface-ground">
-  <aside class="surface-section h-full lg:h-auto hidden lg:block flex-shrink-0 absolute lg:static left-0 top-0 z-1 border-right-1 surface-border select-none w-17rem h-full p-2">
+  <aside class="surface-section h-full lg:h-auto hidden lg:block flex-shrink-0 absolute lg:static left-0 top-0 z-1 border-right-1 surface-border select-none w-17rem h-full p-2" [ngClass]="{'hidden': sidebarService.showSideBar}">
     <app-sidebar></app-sidebar>
 
   </aside>
@@ -9,6 +9,7 @@
       class="flex justify-content-between align-items-center px-5 surface-0 border-bottom-1 surface-border relative lg:static"
     >
       <a
+
         pripple=""
         pstyleclass="@next"
         enterclass="hidden"
@@ -16,7 +17,8 @@
         leavetoclass="hidden"
         leaveactiveclass="fadeout"
         class="p-element p-ripple cursor-pointer block lg:hidden text-700"
-        ><i class="pi pi-ellipsis-v text-2xl"></i
+        (click)="toggleSidebar()"
+        ><i id="sidebar-toggle" class="pi pi-ellipsis-v text-2xl"></i
         ><span
           class="p-ink"
           style="height: 21px; width: 21px; top: -9.75px; left: 1px"
