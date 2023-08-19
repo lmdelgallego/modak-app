@@ -1,0 +1,20 @@
+<p-table [value]="moviesData" responsiveLayout="stack" [breakpoint]="'960px'">
+  <ng-template pTemplate="header">
+      <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Votes</th>
+          <th>Vote (AVR)</th>
+          <th>Release Date</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-movie>
+      <tr>
+          <td><img [src]="getImageUrl(movie.poster_path)" width="50" /></td>
+          <td>{{ movie.original_title }}</td>
+          <td>{{ movie.vote_count }}</td>
+          <td>{{ movie.vote_average }}</td>
+          <td>{{ movie.release_date | date }}</td>
+      </tr>
+  </ng-template>
+</p-table>

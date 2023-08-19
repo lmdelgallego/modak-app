@@ -15,9 +15,9 @@ export class SidebarComponent {
       icon: PrimeIcons.IMAGES,
     },
     {
-      to: '/crypto',
-      label: 'Crypto',
-      icon: PrimeIcons.MONEY_BILL,
+      to: '/movies',
+      label: 'movies',
+      icon: PrimeIcons.TICKET,
     },
   ];
 

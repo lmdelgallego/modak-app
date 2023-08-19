@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CryptoComponent } from './crypto.component';
-import { CryptoListComponent } from './list/list.component';
+import { MoviesComponent } from './movies.component';
+import { MovieListComponent } from './list/list.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: CryptoComponent,
+    component: MoviesComponent,
     children: [
       { path: '', redirectTo: 'list', pathMatch: 'full' },
-      { path: 'list', component: CryptoListComponent },
+      { path: 'list', component: MovieListComponent },
     ],
   },
 ];

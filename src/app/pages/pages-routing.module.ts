@@ -17,9 +17,9 @@ import { AuthGuard } from '../auth/guards/auth.guard';
               import('../artwork/artwork.module').then((m) => m.ArtworkModule),
           },
           {
-            path: 'crypto',
+            path: 'movies',
             loadChildren: () =>
-              import('../crypto/crypto.module').then((m) => m.CryptoModule),
+              import('../movies/movies.module').then((m) => m.MoviesModule),
           },
         ],
       },

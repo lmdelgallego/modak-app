@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CryptoListComponent } from './list/list.component';
-import { CryptoComponent } from './crypto.component';
+import { MovieListComponent } from './list/list.component';
+import { MoviesComponent } from './movies.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CryptoRoutingModule } from './crypto-routing.module';
+import { CryptoRoutingModule } from './movies-routing.module';
 
 import { TableModule } from 'primeng/table';
 
 @NgModule({
-  declarations: [CryptoListComponent, CryptoComponent],
+  declarations: [MovieListComponent, MoviesComponent],
   imports: [CommonModule, HttpClientModule, CryptoRoutingModule, TableModule],
 })
-export class CryptoModule {}
+export class MoviesModule {}
