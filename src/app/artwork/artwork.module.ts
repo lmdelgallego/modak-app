@@ -9,6 +9,7 @@ import { ArtworkComponent } from './artwork.component';
 import { ArtworkRoutingModule } from './artwork-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [ArtworkComponent],
@@ -22,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     InputTextModule,
     ButtonModule,
     PaginatorModule,
+    ComponentsModule,
   ],
 })
 export class ArtworkModule {}
