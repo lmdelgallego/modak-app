@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { PageComponent } from './page.component';
+import { AuthGuard } from '../auth/guards/auth.guard';
 
 @NgModule({
   imports: [
@@ -8,6 +9,7 @@ import { PageComponent } from './page.component';
       {
         path: '',
         component: PageComponent,
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',

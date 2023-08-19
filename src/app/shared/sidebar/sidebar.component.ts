@@ -23,7 +23,6 @@ export class SidebarComponent {
 
   @HostListener('document:click', ['$event'])
   clickout(event: any) {
-    console.log(event.target);
     if (event.target.id !== 'sidebar-toggle') {
       this.service.toggleSidebar();
     } else {
